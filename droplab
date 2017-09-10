@@ -12,9 +12,11 @@ from optparse import OptionParser
 def upload_file(project_id, filename, dropbox_token):
     dbx = dropbox.Dropbox(dropbox_token)
     file_path = os.path.abspath(filename)
+    path_end = "".join(["{}{}".format(os.sep, x) for x in file_path.split(os.sep)[-2:]])
     with open(filename, "rb") as f:
-        dbx.files_upload(f.read(), file_path, mute=True)
-        link = dbx.files_get_temporary_link(path=file_path).link
+        dbx.files_upload(f.read(), path_end, mute=True)
+        print('Uploading file...')
+        link = dbx.files_get_temporary_link(path=path_end).link
         return link
 
 
@@ -26,7 +28,7 @@ def create_new_issue(project_id, file, gitlab_token, title, link):
         'description': html_link
     }
     r = requests.post('https://gitlab.com/api/v4/projects/{0}/issues'.format(project_id), headers=headers, params=params)
-
+    print('New issue is done')
 
 if __name__ == '__main__':
     parser = OptionParser()
