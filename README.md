@@ -1,29 +1,26 @@
+# Last of JIRA
 
-DROPLAB – help you to automatize making issue with attaches on gitlab
+Program "last of JIRA" created to find last issue of each user
 
-   
-RUN
+Application:
 
-you have no need to install program
+  - get nick from JIRA.
+  - display statics in command line.
 
-you can run it with  console "python drolab.py" command
+## First
+To work with our program you need:
+- Python 2.7 or 3.5
+- Virtual enviremet
+- Sys, requests, optparse libs
+- JIRA account.
 
-for total form of console input you need to type
-
-droplab [OPTIONS]
-
-OPTIONS
-
-    --dropbox_token					Dropbox private token
-    --gitlab_token					Gitlab private token
-    -f				--file			File to upload gitlab.com
-    -p				--project		Project id where you will upload file
-    -t				--title			Title for new issue
-   
-
-
-python drolab.py --gitlab_token your_token --file filename.format --project project_number --title title_of_yout_issue --dropbox_token token_on_dropbox
-
-for example:
-
-python gitlab_board_issue.py --gitlab_token fdgdsJHJnH8fyMh --file rat.py --project 4067343 --title Issue --dropbox_token JHJHHJHHHJDHDJSBfadr-oQlRdg55-B90eTItbj0SyEJKHJH787BBaY
+## How to install requirments
+You should copy this command in to command line:
+```sh
+$ pip install -r requirements.txt
+```
+# To run program
+You may insert
+```sh
+python3 last_of_jira.py -u username -p password -a assignee_username
+```
